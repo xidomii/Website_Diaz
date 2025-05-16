@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diaz Kartell - Hermanos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: #f0f0f0;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .header, .footer {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+
+    .flag-color.green { color: #008000; }
+    .flag-color.white { color: #ffffff; }
+    .flag-color.red { color: #ff0000; }
+
+    nav {
+      background-color: #111;
+      padding: 1rem 0;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #ff4500;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background-color: #111;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+
+    .form-container input,
+    .form-container button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .form-container input {
+      background-color: #222;
+      color: #f0f0f0;
+    }
+
+    .form-container button {
+      background-color: #ff4500;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background-color: #e03d00;
+    }
+
+    .member-box {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background-color: #111;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    }
+
+    .member-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .member-card {
+      background-color: #1a1a1a;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(255,255,255,0.05);
+      transition: transform 0.2s;
+    }
+
+    .member-card:hover {
+      transform: scale(1.02);
+    }
+
+    .member-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: crimson;
+    }
+
+    .delete-button {
+      margin-top: 1rem;
+      background-color: #aa0000;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      background-color: #cc0000;
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .animate.visible {
+      animation: fadeSlideIn 0.8s ease-out forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .title { font-size: 2rem; }
+      .subtitle { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Diaz Kartell</a></li>
+      <li><a href="informationen.html" class="nav-link">Informationen</a></li>
+      <li><a href="legales.html" class="nav-link">Legales Business</a></li>
+      <li><a href="philo.html" class="nav-link">Philosophie</a></li>
+      <li><a href="sanktionen.html" class="nav-link">Sanktionskatalog</a></li>
+      <li><a href="raenge.html" class="nav-link">Ränge</a></li>
+      <li><a href="merkmale.html" class="nav-link">Merkmale</a></li>
+      <li><a href="hermanos.html" class="nav-link active">Hermanos</a></li>
+    </ul>
+  </nav>
+
+  <header class="header animate" style="--delay: 0.1s">
+    <h1 class="title">
+      <span class="flag-color green">D</span><span class="flag-color white">i</span><span class="flag-color red">a</span><span class="flag-color green">z</span> Kartell
+    </h1>
+    <p class="subtitle">Unsere Brüder im Kartell</p>
+  </header>
+
+  <main class="content">
+    <h2 class="section-title animate" style="--delay: 0.3s">Hermanos eintragen</h2>
+
+    <div class="form-container animate" style="--delay: 0.4s">
+      <form id="hermanoForm">
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="text" id="rolle" placeholder="Rolle / Rang" required />
+        <button type="submit">Hinzufügen</button>
+      </form>
+    </div>
+
+    <div class="member-box animate" style="--delay: 0.6s">
+      <div class="member-list" id="hermanoList"></div>
+    </div>
+  </main>
+
+  <footer class="footer animate" style="--delay: 0.8s">
+    &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+    const form = document.getElementById('hermanoForm');
+    const list = document.getElementById('hermanoList');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const rolle = document.getElementById('rolle').value;
+
+      const card = document.createElement('div');
+      card.className = 'member-card animate visible';
+      card.innerHTML = `
+        <div class="member-name">${name}</div>
+        <p><strong>Rolle:</strong> ${rolle}</p>
+        <button class="delete-button">🗑️ Löschen</button>
+      `;
+
+      card.querySelector('.delete-button').addEventListener('click', () => {
+        card.remove();
+      });
+
+      list.appendChild(card);
+      form.reset();
+    });
+  </script>
+</body>
+</html>
+^
