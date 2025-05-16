@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diaz Kartell - Friedenstisch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* Grundstyles */
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      user-select: none;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 1rem 0;
+      box-shadow: 0 3px 8px rgba(255, 69, 0, 0.4);
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #ff4500;
+      text-shadow: 0 0 8px #ff4500;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 2rem 1rem 1rem 1rem;
+      user-select: none;
+      animation: fadeInDown 1s ease forwards;
+    }
+
+    .title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 3rem;
+      color: #ff4500;
+      margin: 0;
+      user-select: none;
+      letter-spacing: 3px;
+      text-shadow: 0 0 12px #ff4500;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #aaa;
+      margin-top: 0.3rem;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    /* Flag Colors */
+    .flag-color.green { color: #008000; }
+    .flag-color.white { color: #fff; }
+    .flag-color.red { color: #ff0000; }
+
+    /* Main Content */
+    main.content {
+      max-width: 900px;
+      margin: 2rem auto 4rem auto;
+      padding: 2rem 2.5rem;
+      background-color: #111;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+      flex-grow: 1;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    h2.section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.5rem;
+      color: #ff4500;
+      margin-bottom: 1rem;
+      border-left: 6px solid #ff4500;
+      padding-left: 1rem;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    h3 {
+      color: #ff4500;
+      font-family: 'Cinzel Decorative', cursive;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      user-select: none;
+    }
+
+    p, ul.info-list {
+      font-size: 1.1rem;
+      color: #ddd;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    ul.info-list {
+      list-style: disc inside;
+      padding-left: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    ul.info-list li {
+      margin-bottom: 0.7rem;
+      cursor: default;
+      transition: color 0.3s ease;
+    }
+
+    ul.info-list li:hover {
+      color: #ffbb99;
+    }
+
+    strong {
+      color: #ff6a00;
+    }
+
+    em {
+      color: #aaa;
+      font-style: italic;
+    }
+
+    /* Zurück-Button */
+    .back-button {
+      background-color: #ff4500;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 0 10px #ff4500;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      margin-top: 2rem;
+      display: inline-block;
+    }
+
+    .back-button:hover {
+      background-color: #e03e00;
+      box-shadow: 0 0 15px #ff6a00;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 1.2rem 0;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #666;
+      user-select: none;
+      border-top: 1px solid #222;
+      box-shadow: inset 0 1px 3px rgba(255, 69, 0, 0.4);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .title {
+        font-size: 2.2rem;
+      }
+      .subtitle {
+        font-size: 1rem;
+      }
+      main.content {
+        margin: 1rem;
+        padding: 1.2rem 1.5rem;
+      }
+      .nav-link {
+        font-size: 0.9rem;
+      }
+      h2.section-title {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Diaz Kartell</a></li>
+      <li><a href="informationen.html" class="nav-link active">Informationen</a></li>
+      <li><a href="legales.html" class="nav-link">Legales Business</a></li>
+      <li><a href="philo.html" class="nav-link">Philosophie</a></li>
+      <li><a href="sanktionen.html" class="nav-link">Sanktionskatalog</a></li>
+      <li><a href="raenge.html" class="nav-link">Ränge</a></li>
+      <li><a href="merkmale.html" class="nav-link">Merkmale</a></li>
+      <li><a href="hermanos.html" class="nav-link">Hermanos</a></li>
+      <li><a href="ziele.html" class="nav-link">Fazit</a></li>
+      <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <header class="header">
+    <h1 class="title">
+      <span class="flag-color green">D</span><span class="flag-color white">i</span><span class="flag-color red">a</span><span class="flag-color green">z</span> Kartell
+    </h1>
+    <p class="subtitle">Friedenstisch</p>
+  </header>
+
+  <main class="content" id="contract">
+    <h2 class="section-title">Friedensvertrag</h2>
+
+    <p><strong>zwischen</strong><br>
+    <em>Diaz Kartell (Vertraggeber)</em><br>
+    <em>und den folgenden Parteien:</em></p>
+
+    <br>
+
+    <p>Der Krieg hat seine Spuren hinterlassen, doch die Vernunft siegt über das Chaos. Wo einst Blut floss, soll nun Frieden herrschen. Dies ist das Abkommen, das die Klingen ruhen lässt und den Schatten Einhalt gebietet. Der Weg der Einigkeit beginnt...</p>
+
+    <h3>1. Vertragsgegenstand:</h3>
+    <p>Dieser Vertrag regelt die Bedingungen und Rahmenbedingungen des Friedens zwischen den oben genannten Parteien innerhalb von Narco City.</p>
+
+    <h3>2. Standort der Vereinbarung:</h3>
+    <p><em>___________________________</em></p>
+
+    <h3>3. Datum und Uhrzeit:</h3>
+    <p>Datum: _______________<br>
+    Uhrzeit: _______________</p>
+
+    <h3>4. Bedingungen:</h3>
+    <ul class="info-list">
+      <li>Beide Parteien erklären sich mit den festgelegten Bedingungen einverstanden und verpflichten sich, jegliche Feindseligkeiten zu beenden.</li>
+      <li>Der Frieden gilt als bindend und Verstöße können zu Sanktionen durch das Diaz Kartell führen.</li>
+      <li>Alle Parteien verpflichten sich zur Einhaltung der vereinbarten Bedingungen, um die Stabilität in Narco City zu gewährleisten.</li>
+    </ul>
+
+    <h3>5. Unterschriften:</h3>
+    <p>Mit der Unterzeichnung dieses Vertrags erklären sich alle Parteien mit den oben genannten Bedingungen einverstanden.</p>
+
+    <p><strong>Diaz Kartell:</strong><br>(Datum, Unterschrift)</p>
+    <p><strong>Partei 1:</strong><br>(Datum, Unterschrift)</p>
+    <p><strong>Partei 2:</strong><br>(Datum, Unterschrift)</p>
+
+    <button onclick="window.location.href='informationen.html'" class="back-button">Zurück zu Informationen</button>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
+  </footer>
+
+  <script>
+    // kleiner Effekt: Glühender Titel beim Laden, dann sanft zurücksetzen
+    window.addEventListener('load', () => {
+      const title = document.querySelector('.title');
+      title.style.textShadow = '0 0 20px #ff4500, 0 0 30px #ff4500, 0 0 40px #ff4500';
+      setTimeout(() => {
+        title.style.transition = 'text-shadow 1.5s ease';
+        title.style.textShadow = '0 0 12px #ff4500';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

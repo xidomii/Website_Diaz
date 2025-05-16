@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diaz Kartell - Kreditvertrag</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* --- Grunddesign --- */
+    body {
+      background-color: #000;
+      color: #f0f0f0;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+      user-select: none;
+      padding: 0 1rem;
+      overflow-x: hidden;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 1rem 0;
+      box-shadow: 0 3px 8px rgba(255, 69, 0, 0.4);
+      text-align: center;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: inline-flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #ff4500;
+      text-shadow: 0 0 8px #ff4500;
+    }
+
+    header.header {
+      text-align: center;
+      padding: 2rem 1rem 1rem 1rem;
+      user-select: none;
+      animation: fadeInDown 1s ease forwards;
+      position: relative;
+      overflow: visible;
+    }
+
+    h1.title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 3rem;
+      color: #ff4500;
+      margin: 0;
+      user-select: none;
+      letter-spacing: 3px;
+      text-shadow: 0 0 12px #ff4500;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Glüheffekt über dem Titel mit Pseudoelement */
+    h1.title::after {
+      content: '';
+      position: absolute;
+      top: -10px; left: 50%;
+      width: 120%;
+      height: 20px;
+      background: radial-gradient(circle, #ff4500 30%, transparent 80%);
+      transform: translateX(-50%);
+      filter: blur(10px);
+      opacity: 0.7;
+      z-index: 0;
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.7; filter: blur(10px); }
+      50% { opacity: 0.3; filter: blur(15px); }
+    }
+
+    .flag-color.green { color: #008000; }
+    .flag-color.white { color: #fff; }
+    .flag-color.red { color: #ff0000; }
+
+    p.subtitle {
+      font-size: 1.3rem;
+      color: #aaa;
+      margin-top: 0.3rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 1.2px;
+      animation: fadeInSubtitle 2s ease forwards;
+    }
+
+    @keyframes fadeInSubtitle {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main.content {
+      max-width: 900px;
+      margin: 2rem auto 4rem auto;
+      padding: 2rem 2.5rem;
+      background-color: #111;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+      flex-grow: 1;
+      animation: fadeInUp 1s ease forwards;
+      position: relative;
+    }
+
+    h2.section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.5rem;
+      color: #ff4500;
+      margin-bottom: 1rem;
+      border-left: 6px solid #ff4500;
+      padding-left: 1rem;
+      user-select: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      position: relative;
+      overflow: visible;
+    }
+
+    /* animierter Unterstrich */
+    h2.section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px; left: 1rem;
+      width: 0;
+      height: 4px;
+      background: #ff6a00;
+      border-radius: 2px;
+      transition: width 0.5s ease;
+    }
+    h2.section-title:hover::after {
+      width: 50%;
+    }
+
+    h3 {
+      color: #ff4500;
+      font-family: 'Cinzel Decorative', cursive;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      user-select: none;
+    }
+
+    p, ul {
+      font-size: 1.1rem;
+      color: #ddd;
+      margin-bottom: 1rem;
+      white-space: pre-line;
+    }
+
+    strong {
+      color: #ff6a00;
+    }
+
+    em {
+      color: #aaa;
+      font-style: italic;
+    }
+
+    /* Cooles Glüh-Button-Design */
+    .btn-back {
+      display: inline-block;
+      background-color: #ff4500;
+      color: #fff;
+      padding: 0.7rem 1.6rem;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow:
+        0 0 10px #ff4500,
+        0 0 20px #ff4500,
+        0 0 30px #ff6a00,
+        0 0 40px #ff6a00;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      margin-top: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-back:hover {
+      background-color: #ff6a00;
+      box-shadow:
+        0 0 15px #ff6a00,
+        0 0 30px #ff6a00,
+        0 0 40px #ff4500,
+        0 0 50px #ff4500;
+      transform: scale(1.05);
+    }
+
+    /* animiertes Hintergrund-Glühen beim Button */
+    .btn-back::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255,69,0,0.6), transparent 60%);
+      opacity: 0.5;
+      filter: blur(20px);
+      animation: glowPulse 4s ease-in-out infinite;
+      z-index: 0;
+      border-radius: 10px;
+    }
+
+    .btn-back > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.1; transform: scale(1.1); }
+    }
+
+    footer.footer {
+      text-align: center;
+      padding: 1.2rem 0;
+      background-color: #111;
+      font-size: 0.9rem;
+      color: #666;
+      user-select: none;
+      border-top: 1px solid #222;
+      box-shadow: inset 0 1px 3px rgba(255, 69, 0, 0.4);
+      margin-top: auto;
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1.title {
+        font-size: 2.2rem;
+      }
+      p.subtitle {
+        font-size: 1rem;
+      }
+      main.content {
+        margin: 1rem;
+        padding: 1.2rem 1.5rem;
+      }
+      .nav-link {
+        font-size: 0.9rem;
+      }
+      h2.section-title {
+        font-size: 1.8rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Diaz Kartell</a></li>
+      <li><a href="informationen.html" class="nav-link active">Informationen</a></li>
+      <li><a href="legales.html" class="nav-link">Legales Business</a></li>
+      <li><a href="philo.html" class="nav-link">Philosophie</a></li>
+      <li><a href="sanktionen.html" class="nav-link">Sanktionskatalog</a></li>
+      <li><a href="raenge.html" class="nav-link">Ränge</a></li>
+      <li><a href="merkmale.html" class="nav-link">Merkmale</a></li>
+      <li><a href="hermanos.html" class="nav-link">Hermanos</a></li>
+      <li><a href="ziele.html" class="nav-link">Fazit</a></li>
+      <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <header class="header">
+    <h1 class="title">
+      <span class="flag-color green">D</span><span class="flag-color white">i</span><span class="flag-color red">a</span><span class="flag-color green">z</span> Kartell
+    </h1>
+    <p class="subtitle">Kreditvertrag</p>
+  </header>
+
+  <main class="content">
+    <h2 class="section-title">Kreditvertrag</h2>
+
+    <p><strong>Zwischen:</strong><br>
+    Diaz Kartell<br>
+    Postleitzahl: 927<br>
+    Roxwood, Narco City<br><br>
+    und<br><br>
+    Kreditnehmer<br>
+    Max Mustermann<br>
+    Postleitzahl: 9999<br>
+    Sandy Shores, Narco City
+    </p>
+
+    <p><strong>§ 1 Vertragsgegenstand</strong><br>
+    Der Kreditgeber (Diaz Kartell) gewährt dem Kreditnehmer einen Kreditbetrag in Höhe von [Betrag in Euro], zu einem Zinssatz von 25%. Die Rückzahlung des Kredits ist innerhalb des vereinbarten Zeitraums zu leisten.</p>
+
+    <p><strong>§ 2 Kreditbetrag und Rückzahlung</strong><br>
+    Der Kreditbetrag beträgt [Betrag in Euro].<br>
+    Der Zinssatz des Kredits beträgt 25 %.<br>
+    Die Rückzahlung des Kredits erfolgt in Höhe von [Rückzahlungsbetrag].<br>
+    Die Rückzahlung muss bis spätestens [Datum] erfolgen.<br>
+    Wird die Rückzahlung nicht fristgerecht geleistet, behält sich der Kreditgeber das Recht vor, das Pfand einzubehalten.
+    </p>
+
+    <p><strong>§ 3 Pfand</strong><br>
+    Als Sicherheit für den gewährten Kredit hinterlegt der Kreditnehmer folgendes Pfand:<br>
+    [Art des Pfands, z. B. Auto, Waffen, Immobilien]. – Hierbei ist zu beachten, dass aufgrund der schwankenden Preise ein geringerer Wert für den Pfand kalkuliert wird.<br>
+    Sollte der Kreditnehmer die Rückzahlung nicht innerhalb des vereinbarten Zeitraums leisten, behält sich der Kreditgeber das Recht vor, das Pfand zu verkaufen oder anderweitig zu verwerten, um den Kreditbetrag zu decken.
+    </p>
+
+    <p><strong>§ 4 Haftung und Verantwortung</strong><br>
+    Der Kreditnehmer verpflichtet sich, die Rückzahlung des Kredits gemäß den vereinbarten Bedingungen vorzunehmen.<br>
+    Der Kreditgeber ist nicht haftbar für Schäden, die durch die Nichtzahlung des Kredits entstehen, und hat das Recht, sämtliche rechtlichen Schritte zu ergreifen, um die Rückzahlung zu sichern.
+    </p>
+
+    <p><strong>§ 5 Gültigkeit des Vertrags</strong><br>
+    Dieser Vertrag tritt mit der Unterzeichnung beider Parteien in Kraft. Änderungen oder Ergänzungen dieses Vertrags bedürfen der schriftlichen Zustimmung beider Parteien.
+    </p>
+
+    <p><strong>§ 6 Unterschriften</strong><br>
+    Kreditgeber:<br>
+    Unterschrift: ___________________<br>
+    Datum: ___________________<br><br>
+    Kreditnehmer:<br>
+    Unterschrift: ___________________<br>
+    Datum: ___________________
+    </p>
+
+    <button class="btn-back" id="btnBack">Zurück zu Informationen</button>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
+  </footer>
+
+  <script>
+    // Button klick navigiert zurück zu informationen.html mit sanfter Animation
+    document.getElementById('btnBack').addEventListener('click', () => {
+      // Button kurz animieren
+      const btn = document.getElementById('btnBack');
+      btn.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        btn.style.transform = '';
+        window.location.href = 'informationen.html';
+      }, 150);
+    });
+  </script>
+</body>
+</html>

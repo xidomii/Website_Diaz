@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <nav>
+  <nav class="navbar">
     <ul class="nav-list">
       <li><a href="index.html" class="nav-link">Diaz Kartell</a></li>
       <li><a href="informationen.html" class="nav-link">Informationen</a></li>
@@ -23,7 +23,7 @@
     </ul>
   </nav>
 
-  <header class="header animate" style="--delay: 0.1s">
+  <header class="header">
     <h1 class="title">
       <span class="flag-color green">D</span><span class="flag-color white">i</span><span class="flag-color red">a</span><span class="flag-color green">z</span> Kartell
     </h1>
@@ -31,60 +31,158 @@
   </header>
 
   <main class="content">
-    <h2 class="section-title animate" style="--delay: 0.3s">Hermanos eintragen</h2>
+    <h2 class="section-title">Hermanos eintragen</h2>
 
-    <div class="form-container animate" style="--delay: 0.4s">
-      <form id="hermanoForm">
+    <p class="member-count">Gesamtmitglieder: <span id="mitgliederCount">0</span></p>
+
+    <div class="form-container">
+      <form id="hermanoForm" autocomplete="off">
         <input type="text" id="name" placeholder="Name" required />
-        <input type="text" id="rolle" placeholder="Rolle / Rang" required />
+        <input type="text" id="rang" placeholder="Rang" required />
         <button type="submit">Hinzufügen</button>
       </form>
     </div>
 
-    <div class="member-box animate" style="--delay: 0.6s">
+    <div class="member-box">
       <div class="member-list" id="hermanoList"></div>
     </div>
   </main>
 
-  <footer class="footer animate" style="--delay: 0.8s">
+  <footer class="footer">
     &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
   </footer>
 
   <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+    const hermanos = [
+      { name: "La Cabeza", rang: "Patron(12)" },
+      { name: "Killian Cruz", rang: "11" },
+      { name: "Malli Moore", rang: "11" },
+      { name: "Abdi Rahnam", rang: "10" },
+      { name: "Emre Ufka", rang: "9" },
+      { name: "Mina Malou", rang: "7" },
+      { name: "Alechandro Kusnenzow", rang: "7" },
+      { name: "Aymen Fox", rang: "6" },
+      { name: "Pacho Herrera", rang: "5" },
+      { name: "Stanley Ross", rang: "5" },
+      { name: "Diogo Loren", rang: "2" },
+      { name: "Emilio Benz", rang: "2" },
+      { name: "Fernando Utrez", rang: "2" },
+      { name: "Lucas Grail", rang: "1" },
+      { name: "Malia", rang: "1" },
+      { name: "Amado Alejandro", rang: "Futuro" },
+      { name: "Bella", rang: "Futuro" },
+      { name: "Efe Piskopat", rang: "Futuro" },
+      { name: "John Freud", rang: "Futuro" },
+      { name: "Jordan Dubel", rang: "Futuro" },
+      { name: "Luis", rang: "Futuro" },
+      { name: "Mark Grail", rang: "Futuro" },
+      { name: "Anton Horvath", rang: "Futuro" },
+      { name: "Rick Morty", rang: "Futuro" },
+      { name: "Shiko Catem", rang: "Futuro" },
+      { name: "Tony Diablos", rang: "Futuro" },
+      { name: "David", rang: "Futuro" },
+      { name: "Milano Aslan", rang: "Futuro" },
+      { name: "Max Pro", rang: "Futuro" },
+      { name: "Kane Kuzu", rang: "Futuro" },
+      { name: "Diego", rang: "Futuro" },
+      { name: "Burak", rang: "Futuro" },
+      { name: "Arda Semmo", rang: "Futuro" },
+      { name: "Oghuzan Champion", rang: "Futuro" },
+      { name: "Sothniron Hunter", rang: "Futuro" },
+      { name: "Zane Youngstar", rang: "Futuro" }
+    ];
 
     const form = document.getElementById('hermanoForm');
     const list = document.getElementById('hermanoList');
+    const mitgliederCount = document.getElementById('mitgliederCount');
+
+    function createMemberCard(name, rang) {
+      const card = document.createElement('div');
+      card.className = 'member-card';
+      card.innerHTML = `
+        <div class="member-name">${name}</div>
+        <p><strong>Rang:</strong> ${rang}</p>
+        <button class="delete-button">🗑️ Löschen</button>
+      `;
+      card.querySelector('.delete-button').addEventListener('click', () => {
+        card.remove();
+        mitgliederCount.textContent = list.childElementCount;
+      });
+      return card;
+    }
+
+    function loadHermanos() {
+      hermanos.forEach(({ name, rang }) => {
+        const card = createMemberCard(name, rang);
+        list.appendChild(card);
+      });
+      mitgliederCount.textContent = list.childElementCount;
+    }
 
     form.addEventListener('submit', e => {
       e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const rang = document.getElementById('rang').value.trim();
+      if (!name || !rang) return;
 
-      const name = document.getElementById('name').value;
-      const rolle = document.getElementById('rolle').value;
-
-      const card = document.createElement('div');
-      card.className = 'member-card animate visible';
-      card.innerHTML = `
-        <div class="member-name">${name}</div>
-        <p><strong>Rolle:</strong> ${rolle}</p>
-        <button class="delete-button">🗑️ Löschen</button>
-      `;
-
-      card.querySelector('.delete-button').addEventListener('click', () => {
-        card.remove();
-      });
-
-      list.appendChild(card);
+      const newCard = createMemberCard(name, rang);
+      list.appendChild(newCard);
+      mitgliederCount.textContent = list.childElementCount;
       form.reset();
+    });
+
+    loadHermanos();
+
+    // ✨ Zusätzliche JavaScript-Effekte
+    const fadeInCards = () => {
+      const cards = document.querySelectorAll('.member-card');
+      cards.forEach((card, i) => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          card.style.opacity = 1;
+          card.style.transform = 'translateY(0)';
+        }, i * 60);
+      });
+    };
+
+    const addHoverEffects = () => {
+      const cards = document.querySelectorAll('.member-card');
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'scale(1.03)';
+          card.style.boxShadow = '0 8px 16px rgba(0,0,0,0.2)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'scale(1)';
+          card.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+        });
+      });
+    };
+
+    const animateNewCard = card => {
+      card.style.opacity = 0;
+      card.style.transform = 'translateY(-10px)';
+      setTimeout(() => {
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        card.style.opacity = 1;
+        card.style.transform = 'translateY(0)';
+      }, 10);
+    };
+
+    const originalCreateMemberCard = createMemberCard;
+    createMemberCard = function(name, rang) {
+      const card = originalCreateMemberCard(name, rang);
+      setTimeout(() => animateNewCard(card), 10);
+      return card;
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        fadeInCards();
+        addHoverEffects();
+      }, 200);
     });
   </script>
 </body>

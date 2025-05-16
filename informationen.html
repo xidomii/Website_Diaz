@@ -126,6 +126,73 @@
         padding: 1rem;
       }
     }
+
+
+    /* --- NEUE EFFEKTE --- */
+
+    /* Sanfte Hover-Effekte für Listenelemente */
+    ul.info-list li:hover {
+      color: #ff7a33 !important;
+      transition: color 0.4s ease, transform 0.3s ease;
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+
+    /* Animierte Unterstreichung für Links */
+    .nav-link {
+      position: relative;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      display: block;
+      margin-top: 5px;
+      right: 0;
+      background: #ff4500;
+      transition: width 0.3s ease;
+      left: auto;
+      bottom: 0;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+      left: 0;
+      right: auto;
+    }
+
+    /* Fade-in beim Scrollen */
+    main.content {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    main.content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Pulsierende Animation für aktive Links */
+    .nav-link.active {
+      animation: pulseGlow 2s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        text-shadow: 0 0 5px #ff4500, 0 0 15px #ff4500;
+        color: #ff4500;
+      }
+      50% {
+        text-shadow: 0 0 12px #ff7a33, 0 0 25px #ff7a33;
+        color: #ff7a33;
+      }
+    }
   </style>
 </head>
 <body>
@@ -155,10 +222,9 @@
     <section>
       <h2 class="section-title">Informationen</h2>
       <ul class="info-list">
-        <li>Diaz Verteiler</li>
-        <li>Friedensvertrag</li>
-        <li>Buchhaltung</li>
-        <li>Kredit</li>
+         <li><a href="verteiler.html" class="nav-link">Diaz Verteiler</a></li>
+         <li><a href="friedenstisch.html" class="nav-link">Friedenstisch</a></li>
+         <li><a href="kredit.html" class="nav-link">Kredit</a></li>
       </ul>
     </section>
   </main>
@@ -166,5 +232,21 @@
   <footer class="footer">
     &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const mainContent = document.querySelector("main.content");
+
+      function checkVisibility() {
+        const rect = mainContent.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          mainContent.classList.add("visible");
+        }
+      }
+
+      checkVisibility();
+      window.addEventListener("scroll", checkVisibility);
+    });
+  </script>
 </body>
 </html>

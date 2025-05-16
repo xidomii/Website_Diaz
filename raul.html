@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raul Diaz – Diaz Kartell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    /* Grundlayout */
+    body {
+      margin: 0;
+      background-color: #111;
+      color: #f5f5f5;
+      font-family: "Roboto", sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      user-select: none;
+    }
+
+    nav ul.nav-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a.nav-link {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-weight: 500;
+      font-family: "Roboto", sans-serif;
+      transition: color 0.3s ease;
+    }
+
+    nav a.nav-link:hover,
+    nav a.nav-link.active {
+      color: #ff4500;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1.5rem;
+      user-select: none;
+    }
+
+    header h1 {
+      font-family: "Cinzel Decorative", cursive;
+      font-size: 3rem;
+      background: linear-gradient(90deg, gold, white);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s infinite linear;
+      user-select: none;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+
+    main {
+      max-width: 700px;
+      margin: 2rem auto 4rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #222222cc, #111111cc);
+      border-radius: 16px;
+      box-shadow: 0 0 30px gold;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    main.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .profil h2 {
+      font-family: "Anton", sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, gold, white);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+      text-align: center;
+      text-shadow: 0 0 6px gold;
+    }
+
+    .profil p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      user-select: text;
+    }
+
+    .profil p strong {
+      color: gold;
+      user-select: text;
+    }
+
+    .zurueck-button {
+      display: inline-block;
+      margin: 2rem auto 0;
+      padding: 0.75rem 2rem;
+      background-color: #222;
+      color: gold;
+      border: 2px solid gold;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-family: "Anton", sans-serif;
+      transition: all 0.3s ease;
+      user-select: none;
+      box-shadow: 0 0 12px gold;
+      display: block;
+      width: max-content;
+      text-align: center;
+    }
+
+    .zurueck-button:hover {
+      background-color: gold;
+      color: #111;
+      box-shadow: 0 0 25px #fffacd;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #000;
+      color: #666;
+      user-select: none;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      main {
+        margin: 1rem;
+        padding: 1rem 1.5rem;
+      }
+
+      .profil h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Diaz Kartell</a></li>
+      <li><a href="informationen.html" class="nav-link">Informationen</a></li>
+      <li><a href="legales.html" class="nav-link">Legales Business</a></li>
+      <li><a href="philo.html" class="nav-link">Philosophie</a></li>
+      <li><a href="sanktionen.html" class="nav-link">Sanktionskatalog</a></li>
+      <li><a href="raenge.html" class="nav-link">Ränge</a></li>
+      <li><a href="merkmale.html" class="nav-link">Merkmale</a></li>
+      <li><a href="hermanos.html" class="nav-link">Hermanos</a></li>
+      <li><a href="ziele.html" class="nav-link">Fazit</a></li>
+      <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Profil – Raul Diaz</h1>
+  </header>
+
+  <main id="profile-main">
+    <div class="profil">
+      <h2>12er – EL Patron</h2>
+      <p><strong>Name:</strong> Raul Diaz</p>
+      <p><strong>Rang:</strong> Höchste Autorität im Kartell – El Patron.</p>
+      <p><strong>Aufgaben:</strong> Strategische Führung, interne Struktur, Netzwerkkontrolle und politische Einflussnahme.</p>
+      <p><strong>Merkmale:</strong> Charismatisch, entschlossen, kaltblütig. Gründer des Kartells mit eiserner Führungshand.</p>
+      <p><strong>Einfluss:</strong> National und international vernetzt. Seine Entscheidungen sind Gesetz innerhalb der Organisation.</p>
+    </div>
+
+    <a class="zurueck-button" href="raenge.html">← Zurück zu den Rängen</a>
+  </main>
+
+  <footer>
+    &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
+  </footer>
+
+  <script>
+    // Fade-In Effekt beim Scrollen
+    document.addEventListener("DOMContentLoaded", () => {
+      const main = document.getElementById("profile-main");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            main.classList.add("visible");
+            observer.unobserve(main);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(main);
+    });
+  </script>
+</body>
+</html>
