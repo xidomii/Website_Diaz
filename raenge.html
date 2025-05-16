@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diaz Kartell – Ränge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", sans-serif;
+      background-color: #111;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    nav {
+      background-color: #111;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul.nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a.nav-link {
+      text-decoration: none;
+      font-weight: 500;
+      color: #f0f0f0;
+      transition: color 0.3s ease;
+      user-select: none;
+      font-family: "Roboto", sans-serif;
+    }
+
+    nav a.nav-link:hover,
+    nav a.nav-link.active {
+      color: #ff4500;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    header h1 {
+      font-family: "Cinzel Decorative", cursive;
+      font-size: 3rem;
+      background: linear-gradient(to right, #008000, #ffffff, #ff0000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      user-select: none;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .rank-hierarchy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .top-row, .mid-row, .bottom-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .rank-container, .rank-10-container, .bottom-rank-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      transition: all 0.8s ease-out;
+    }
+
+    /* Slide-Richtungen */
+    .slide-left {
+      transform: translateX(-50px);
+    }
+
+    .slide-right {
+      transform: translateX(50px);
+    }
+
+    .slide-up {
+      transform: translateY(50px);
+    }
+
+    .visible {
+      opacity: 1 !important;
+      transform: translate(0) !important;
+    }
+
+    .rank-box {
+      background-color: #222;
+      border: 2px solid #444;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-family: "Anton", sans-serif;
+      font-size: 1.6rem;
+      text-align: center;
+      color: #eee;
+      box-shadow: 0 0 12px #900;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .rank-box:hover {
+      box-shadow: 0 0 25px #ff0000, 0 0 40px #ff000080;
+      transform: scale(1.05);
+    }
+
+    .rank-12 {
+      background: linear-gradient(135deg, #008000cc, #ffffffcc, #ff0000cc);
+      color: #111;
+      font-size: 2.5rem;
+      box-shadow: 0 0 30px #008000cc, 0 0 40px #ff0000cc;
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .name {
+      margin-top: 0.5rem;
+      color: #f0f0f0;
+      font-weight: 600;
+      font-family: "Anton", sans-serif;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    .rank-12-container .name {
+      color: #00ff00;
+      font-size: 1.3rem;
+    }
+
+    footer {
+      background-color: #000;
+      color: #777;
+      text-align: center;
+      padding: 1rem;
+      user-select: none;
+    }
+
+    @media (max-width: 720px) {
+      .rank-box {
+        font-size: 1.4rem;
+        padding: 1rem 1.5rem;
+      }
+
+      .name {
+        font-size: 1rem;
+      }
+
+      .rank-12 {
+        font-size: 2rem;
+      }
+
+      .rank-12-container .name {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Diaz Kartell</a></li>
+      <li><a href="informationen.html" class="nav-link">Informationen</a></li>
+      <li><a href="legales.html" class="nav-link">Legales Business</a></li>
+      <li><a href="philo.html" class="nav-link">Philosophie</a></li>
+      <li><a href="sanktionen.html" class="nav-link">Sanktionskatalog</a></li>
+      <li><a href="raenge.html" class="nav-link active">Ränge</a></li>
+      <li><a href="merkmale.html" class="nav-link">Merkmale</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Das Diaz Kartell</h1>
+  </header>
+
+  <main>
+    <div class="rank-hierarchy">
+      <div class="top-row">
+        <div class="rank-container">
+          <div class="rank-box">11er – Vizepatron</div>
+          <div class="name">Killian Cruz</div>
+        </div>
+        <div class="rank-container rank-12-container">
+          <div class="name">Raul Diaz</div>
+          <div class="rank-box rank-12">12er – EL Patron</div>
+        </div>
+        <div class="rank-container">
+          <div class="rank-box">11er – Vizepatron</div>
+          <div class="name">Malik Moore</div>
+        </div>
+      </div>
+
+      <div class="mid-row">
+        <div class="rank-10-container">
+          <div class="rank-box">10er</div>
+          <div class="name">Asesor</div>
+        </div>
+        <div class="rank-10-container">
+          <div class="rank-box">10er</div>
+          <div class="name">Abdi Rahnam</div>
+        </div>
+      </div>
+
+      <div class="bottom-row">
+        <div class="bottom-rank-container"><div class="rank-box">9er</div><div class="name">Inspector</div></div>
+        <div class="bottom-rank-container"><div class="rank-box">8er</div><div class="name">Mensajero</div></div>
+        <div class="bottom-rank-container"><div class="rank-box">7er</div><div class="name">Instructor</div></div>
+        <div class="bottom-rank-container"><div class="rank-box">6er</div><div class="name">Sicario</div></div>
+        <div class="bottom-rank-container"><div class="rank-box">5er</div><div class="name">Informante</div></div>
+        <div class="bottom-rank-container"><div class="rank-box">4er</div><div class="name">Soldado</div></div>
+        <div class="bottom-rank-container"><div class="rank-box">3er</div><div class="name">Captador</div></div>
+        <div class="bottom-rank-container"><div class="rank-box">2er</div><div class="name">El Hermano</div></div>
+        <div class="bottom-rank-container"><div class="rank-box">1er</div><div class="name">El Novato</div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const elements = document.querySelectorAll('.rank-container, .rank-10-container, .bottom-rank-container');
+
+    elements.forEach((el, index) => {
+      if (el.classList.contains('rank-12-container')) {
+        el.classList.add('slide-up');
+      } else if (index % 3 === 0) {
+        el.classList.add('slide-left');
+      } else if (index % 3 === 1) {
+        el.classList.add('slide-up');
+      } else {
+        el.classList.add('slide-right');
+      }
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

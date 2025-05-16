@@ -1,0 +1,153 @@
+/* Grundstyles */
+body {
+  margin: 0;
+  background-color: #111; /* Dunkler, harter Hintergrund */
+  color: #ddd;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+a:hover,
+.nav-link.active {
+  color: #ce1126; /* Starkes Rot für Hover/Aktiv */
+}
+
+/* Navigation */
+nav {
+  background-color: #222;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 1.2px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin: 3rem 1rem 2rem;
+}
+
+.title {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-shadow:
+    2px 2px 6px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(206, 17, 38, 0.8);
+  margin: 0;
+}
+
+.subtitle {
+  font-family: 'Anton', sans-serif;
+  font-size: 1.5rem;
+  color: #aaa;
+  margin-top: 0.2rem;
+  letter-spacing: 1.5px;
+}
+
+/* Flaggenfarben */
+.flag-color.green {
+  color: #006847;
+  text-shadow: 0 0 10px #006847bb;
+}
+
+.flag-color.white {
+  color: #fff;
+  text-shadow: 0 0 15px #fffaaa;
+}
+
+.flag-color.red {
+  color: #ce1126;
+  text-shadow: 0 0 10px #ce1126bb;
+}
+
+/* Hauptinhalt */
+.content {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #ce1126;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #ce1126;
+  padding-bottom: 0.3rem;
+  text-shadow: 1px 1px 5px #000;
+}
+
+/* Info Liste */
+.info-list {
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.3rem;
+  font-family: 'Roboto', sans-serif;
+  color: #ddd;
+  line-height: 2;
+}
+
+.info-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #444;
+}
+
+/* Footer */
+.footer {
+  background-color: #222;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: #666;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
+  border-top: 1px solid #444;
+  user-select: none;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Format */
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+

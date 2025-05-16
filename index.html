@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diaz Kartell - Merkmale</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #000;
+      color: #f0f0f0;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .header, .footer {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #aaa;
+    }
+
+    .flag-color.green { color: #008000; }
+    .flag-color.white { color: #ffffff; }
+    .flag-color.red { color: #ff0000; }
+
+    nav {
+      background-color: #111;
+      padding: 1rem 0;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #ff4500;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .formatted-text {
+      background-color: #111;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .formatted-text p {
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* Animation */
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .animate.visible {
+      animation: fadeSlideIn 0.8s ease-out forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .title { font-size: 2rem; }
+      .subtitle { font-size: 1rem; }
+      .formatted-text { font-size: 1rem; padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Diaz Kartell</a></li>
+      <li><a href="informationen.html" class="nav-link">Informationen</a></li>
+      <li><a href="legales.html" class="nav-link">Legales Business</a></li>
+      <li><a href="philo.html" class="nav-link">Philosophie</a></li>
+      <li><a href="sanktionen.html" class="nav-link">Sanktionskatalog</a></li>
+      <li><a href="raenge.html" class="nav-link">Ränge</a></li>
+      <li><a href="merkmale.html" class="nav-link active">Merkmale</a></li>
+    </ul>
+  </nav>
+
+  <header class="header animate" style="--delay: 0.1s">
+    <h1 class="title">
+      <span class="flag-color green">D</span><span class="flag-color white">i</span><span class="flag-color red">a</span><span class="flag-color green">z</span> Kartell
+    </h1>
+    <p class="subtitle">Die Entstehung des Diaz Kartells</p>
+  </header>
+
+  <main class="content">
+    <section id="philosophie">
+      <h2 class="section-title animate" style="--delay: 0.3s">Die Philosophie – Der Kurzfilm</h2>
+
+      <div class="video-container animate" style="--delay: 0.5s">
+        <iframe
+          src="https://www.youtube.com/embed/1EamcqyJAhI?autoplay=1&mute=1&playsinline=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="formatted-text animate" style="--delay: 0.8s">
+        <p>Sehr geehrte Fraktionsverwaltung,</p>
+
+        <p>
+          die Straßen flüstern bereits, und ein neuer Name beginnt, die Schatten zu durchdringen – das Diaz Kartell. 
+          Was einst in den Traditionen der Della Notte-Familie verwurzelt war, hat sich neu erfunden. 
+          Unter der Führung von Patron La Cabeza entsteht eine Organisation, die nicht nur Geschäfte führt, sondern ein Imperium errichtet – geprägt von strategischer Diplomatie, exklusiven Etablissements und einer Vision, die über das gewöhnliche Spiel der Unterwelt hinausgeht. 
+        </p>
+
+        <p>
+          Unsere Struktur ist durchdacht, unser Plan präzise, und unser Auftreten wird die Stadt verändern. 
+          Wir bringen nicht nur Stil und Klasse in die kriminelle Szene, sondern auch eine neue Dynamik, die sich von bloßer Gewalt abhebt – denn wahre Macht liegt in Kontrolle und Weitsicht. 
+          Mit dieser Bewerbung treten wir nicht einfach in die Welt der Fraktionen ein – wir definieren sie neu. 
+        </p>
+
+        <p>
+          Wir sind bereit, die Stadt auf ein neues Level zu heben. 
+        </p>
+
+        <p>
+          Die Frage ist nur: Ist die Stadt bereit für uns? 
+        </p>
+
+        <p>
+          Mit respektvollen Grüßen, <br />
+          – Das Diaz Kartell –
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer animate" style="--delay: 0.5s">
+    &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
+  </footer>
+
+  <script>
+    // Slide-in + Delay observer
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.animate').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

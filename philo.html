@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diaz Kartell - Philosophie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      border-left: 4px solid #fff;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin: 40px 0;
+      padding-left: 40px;
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.6s ease-in-out;
+    }
+
+    .timeline-item::before {
+      content: "🕵️";
+      position: absolute;
+      left: -22px;
+      background-color: #222;
+      color: #0f0;
+      font-size: 20px;
+      border: 2px solid white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .timeline-item p {
+      margin: 0.3rem 0;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (max-width: 600px) {
+      .timeline {
+        border-left: none;
+        padding-left: 0;
+      }
+
+      .timeline-item {
+        padding-left: 20px;
+      }
+
+      .timeline-item::before {
+        left: -16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html" class="nav-link">Diaz Kartell</a></li>
+      <li><a href="informationen.html" class="nav-link">Informationen</a></li>
+      <li><a href="legales.html" class="nav-link">Legales Business</a></li>
+      <li><a href="philo.html" class="nav-link active">Philosophie</a></li>
+      <li><a href="sanktionen.html" class="nav-link">Sanktionskatalog</a></li>
+      <li><a href="raenge.html" class="nav-link">Ränge</a></li>
+      <li><a href="merkmale.html" class="nav-link active">Merkmale</a></li>
+    </ul>
+  </nav>
+
+  <header class="header">
+    <h1 class="title">
+      <span class="flag-color green">D</span><span class="flag-color white">i</span><span class="flag-color red">a</span><span class="flag-color green">z</span> Kartell
+    </h1>
+    <p class="subtitle">Philosophie des Diaz Kartells</p>
+  </header>
+
+  <main class="content">
+    <section class="timeline">
+      <article class="timeline-item">
+        <h2 class="timeline-title">📍 Die Herrschaft der Familia Della Notte</h2>
+        <p>Don Jessie Weiss steht an der Spitze der Familia della Notte.</p>
+        <p>Die Organisation wächst zu einer der einflussreichsten der Unterwelt von Narco City heran.</p>
+        <p>Intrigen und Spannungen nehmen zu – der Einfluss des Dons beginnt zu schwinden.</p>
+      </article>
+
+      <article class="timeline-item">
+        <h2 class="timeline-title">📍 Das Verschwinden des Dons</h2>
+        <p>Don Jessie Weiss erkennt die drohende Instabilität.</p>
+        <p>Er übergibt die Familia della Notte seinem Capo und verschwindet spurlos.</p>
+        <p>Gerüchte kursieren – niemand glaubt, dass er sich wirklich zurückgezogen hat.</p>
+      </article>
+
+      <article class="timeline-item">
+        <h2 class="timeline-title">📍 Die Geburt des Diaz Kartells</h2>
+        <p>Im Schatten von Narco City beginnt Jessie Weiss, sein eigenes Imperium aufzubauen.</p>
+        <p>Das Diaz Kartell entsteht – mächtiger, gefährlicher und unaufhaltsam.</p>
+        <p>Loyalisten kehren zu ihm zurück, darunter Senior Stoff, Ezio Casanueva und Stanley Ross.</p>
+      </article>
+
+      <article class="timeline-item">
+        <h2 class="timeline-title">📍 Das neue Imperium</h2>
+        <p>Keine alten Traditionen oder Ehrenkodizes mehr.</p>
+        <p>Das Diaz Kartell wird zur stärksten Untergrundmacht von Narco City.</p>
+        <p>Jessie Weiss ist zurück – und diesmal ohne Grenzen oder Regeln.</p>
+      </article>
+
+      <article class="timeline-item">
+        <h2 class="timeline-title">📍 Routen Partnerschaft</h2>
+        <p>Enge Bündnisse führen zu Problemen, aber auch zu Fortschritten.</p>
+        <p>So kam es zu einem geschäftlichen Zusammenhang mit dem Narcos Kartell.</p>
+        <p>Das Diaz Kartell wurde offiziell zum Routen-Partner auf der Kokain-Route.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 Diaz Kartell – "Disziplin ist Macht."
+  </footer>
+
+  <script>
+    // Animation beim Scrollen
+    const items = document.querySelectorAll('.timeline-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    items.forEach(item => observer.observe(item));
+  </script>
+</body>
+</html>
