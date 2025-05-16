@@ -1,5 +1,4 @@
-/* Grundlayout */
-
+/* Schriftarten und Grundlayout */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #000;
@@ -8,11 +7,13 @@ body {
   line-height: 1.6;
 }
 
-header, footer {
+/* Header und Footer */
+.header, .footer {
   text-align: center;
   padding: 1rem 0;
 }
 
+/* Titel */
 .title {
   font-family: 'Cinzel Decorative', cursive;
   font-size: 2.5rem;
@@ -23,14 +24,12 @@ header, footer {
   color: #aaa;
 }
 
-/* Flaggenfarben für Titel */
-
+/* Farben für Diaz-Flagge */
 .flag-color.green { color: #008000; }
 .flag-color.white { color: #ffffff; }
 .flag-color.red { color: #ff0000; }
 
 /* Navigation */
-
 nav {
   background-color: #111;
   padding: 1rem 0;
@@ -43,7 +42,6 @@ nav {
   gap: 2rem;
   margin: 0;
   padding: 0;
-  flex-wrap: wrap;
 }
 
 .nav-link {
@@ -58,49 +56,98 @@ nav {
   color: #ff4500;
 }
 
-/* Video Container */
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 Verhältnis */
-  height: 0;
-  overflow: hidden;
-  margin: 2rem 0;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Formatierter Text-Block */
-
-.formatted-text {
-  background-color: #111;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
-.formatted-text p {
-  margin-bottom: 1rem;
-}
-
 /* Überschriften */
-
 .section-title {
   font-size: 2rem;
   margin-top: 2rem;
   text-align: center;
 }
 
-/* Animationen */
+/* Formular */
+.form-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #111;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
 
+.form-container input,
+.form-container button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-container input {
+  background-color: #222;
+  color: #f0f0f0;
+}
+
+.form-container button {
+  background-color: #ff4500;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #e03d00;
+}
+
+/* Mitgliederliste */
+.member-box {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background-color: #111;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.member-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.member-card {
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.05);
+  transition: transform 0.2s;
+}
+
+.member-card:hover {
+  transform: scale(1.02);
+}
+
+.member-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: crimson;
+}
+
+.delete-button {
+  margin-top: 1rem;
+  background-color: #aa0000;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+}
+
+/* Animation */
 .animate {
   opacity: 0;
   transform: translateY(30px);
@@ -123,47 +170,7 @@ nav {
 }
 
 /* Responsive */
-
 @media (max-width: 768px) {
   .title { font-size: 2rem; }
   .subtitle { font-size: 1rem; }
-  .formatted-text { font-size: 1rem; padding: 1rem; }
-  .nav-list {
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
-
-/* Spezifische Klassen für Hermanos Seite */
-
-.member-box {
-  background-color: #111;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  max-width: 800px;
-  margin: 1rem auto;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.member-name {
-  color: #ff0000; /* Rot für Hermanos Namen */
-  font-weight: 700;
-  font-size: 1.3rem;
-}
-
-.delete-button {
-  background-color: #ff4500;
-  border: none;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.delete-button:hover {
-  background-color: #e03e00;
 }

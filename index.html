@@ -5,122 +5,190 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Diaz Kartell - Merkmale</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  
   <style>
+    /* Grundstyles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #000;
-      color: #f0f0f0;
+      background-color: #121212;
+      color: #eee;
       line-height: 1.6;
-      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .header, .footer {
-      text-align: center;
-      padding: 1rem 0;
+    a {
+      color: #eee;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
 
-    .title {
-      font-family: 'Cinzel Decorative', cursive;
-      font-size: 2.5rem;
+    a:hover,
+    .nav-link.active {
+      color: #ff4c4c; /* Kräftiges Rot als Akzent */
     }
-
-    .subtitle {
-      font-size: 1.2rem;
-      color: #aaa;
-    }
-
-    .flag-color.green { color: #008000; }
-    .flag-color.white { color: #ffffff; }
-    .flag-color.red { color: #ff0000; }
 
     nav {
-      background-color: #111;
-      padding: 1rem 0;
+      background-color: #1f1f1f;
+      padding: 0.8rem 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
     }
 
     .nav-list {
       list-style: none;
       display: flex;
+      gap: 1.5rem;
       justify-content: center;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
+      flex-wrap: wrap;
     }
 
-    .nav-link {
-      color: #f0f0f0;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
+    .header {
+      text-align: center;
+      margin: 2rem 1rem 1rem;
     }
 
-    .nav-link:hover,
-    .nav-link.active {
-      color: #ff4500;
+    .title {
+      font-family: 'Anton', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* Mexikanische Flaggenfarben */
+    .flag-color.green { color: #00a651; } /* Grün */
+    .flag-color.white { color: #ffffff; } /* Weiß */
+    .flag-color.red { color: #ce1126; }   /* Rot */
+
+    .subtitle {
+      font-family: 'Cinzel Decorative', cursive;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #888;
+      margin-top: 0.5rem;
+    }
+
+    .content {
+      flex: 1;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      padding: 0 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #ff4c4c; /* roter Akzent */
     }
 
     .video-container {
       position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      margin-bottom: 2rem;
+      border-radius: 12px;
       overflow: hidden;
-      margin: 2rem 0;
+      box-shadow: 0 0 20px #ff4c4caa; /* rotes Leuchten */
     }
 
     .video-container iframe {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
-    }
-
-    .formatted-text {
-      background-color: #111;
-      padding: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
+      left: 0;
+      top: 0;
+      border: none;
+      border-radius: 12px;
     }
 
     .formatted-text p {
       margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: #ddd;
     }
 
-    .section-title {
-      font-size: 2rem;
-      margin-top: 2rem;
+    /* Footer */
+    .footer {
       text-align: center;
+      padding: 1rem;
+      background-color: #1f1f1f;
+      font-size: 0.9rem;
+      color: #666;
     }
 
-    /* Animation */
+    /* Scroll-to-top Button */
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ff4c4c;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #121212;
+      display: none;
+      box-shadow: 0 0 10px #ff4c4caa;
+      transition: background-color 0.3s ease;
+      z-index: 1000;
+    }
+
+    #topBtn:hover {
+      background-color: #cc3b3b;
+    }
+
+    /* Light mode */
+    body.light-mode {
+      background-color: #fefefe;
+      color: #121212;
+    }
+
+    body.light-mode nav {
+      background-color: #ddd;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    body.light-mode a {
+      color: #121212;
+    }
+
+    body.light-mode a:hover,
+    body.light-mode .nav-link.active {
+      color: #cc3b3b;
+    }
+
+    body.light-mode .footer {
+      background-color: #ddd;
+      color: #444;
+    }
+
+    body.light-mode #topBtn {
+      background-color: #cc3b3b;
+      color: #fefefe;
+    }
+
+    body.light-mode #topBtn:hover {
+      background-color: #990000;
+    }
+
+    /* Animation (sichtbar machen beim Scrollen) */
     .animate {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
     .animate.visible {
-      animation: fadeSlideIn 0.8s ease-out forwards;
-      animation-delay: var(--delay, 0s);
-    }
-
-    @keyframes fadeSlideIn {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .title { font-size: 2rem; }
-      .subtitle { font-size: 1rem; }
-      .formatted-text { font-size: 1rem; padding: 1rem; }
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -135,6 +203,8 @@
       <li><a href="raenge.html" class="nav-link">Ränge</a></li>
       <li><a href="merkmale.html" class="nav-link">Merkmale</a></li>
       <li><a href="hermanos.html" class="nav-link">Hermanos</a></li>
+      <li><a href="ziele.html" class="nav-link">Fazit</a></li>
+      <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
     </ul>
   </nav>
 
@@ -161,27 +231,22 @@
 
       <div class="formatted-text animate" style="--delay: 0.8s">
         <p>Sehr geehrte Fraktionsverwaltung,</p>
-
         <p>
           die Straßen flüstern bereits, und ein neuer Name beginnt, die Schatten zu durchdringen – das Diaz Kartell. 
           Was einst in den Traditionen der Della Notte-Familie verwurzelt war, hat sich neu erfunden. 
           Unter der Führung von Patron La Cabeza entsteht eine Organisation, die nicht nur Geschäfte führt, sondern ein Imperium errichtet – geprägt von strategischer Diplomatie, exklusiven Etablissements und einer Vision, die über das gewöhnliche Spiel der Unterwelt hinausgeht. 
         </p>
-
         <p>
           Unsere Struktur ist durchdacht, unser Plan präzise, und unser Auftreten wird die Stadt verändern. 
           Wir bringen nicht nur Stil und Klasse in die kriminelle Szene, sondern auch eine neue Dynamik, die sich von bloßer Gewalt abhebt – denn wahre Macht liegt in Kontrolle und Weitsicht. 
           Mit dieser Bewerbung treten wir nicht einfach in die Welt der Fraktionen ein – wir definieren sie neu. 
         </p>
-
         <p>
           Wir sind bereit, die Stadt auf ein neues Level zu heben. 
         </p>
-
         <p>
           Die Frage ist nur: Ist die Stadt bereit für uns? 
         </p>
-
         <p>
           Mit respektvollen Grüßen, <br />
           – Das Diaz Kartell –
@@ -194,8 +259,14 @@
     &copy; 2025 Diaz Kartell – „Wir verändern die Stadt.“
   </footer>
 
+  <!-- Scroll-to-top Button -->
+  <button id="topBtn" title="Nach oben">↑</button>
+
+  <!-- Light/Dark Mode Toggle Button -->
+  <button id="modeToggle" title="Weißmodus umschalten">☀️</button>
+
   <script>
-    // Slide-in + Delay observer
+    // Scroll-Animation
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -207,6 +278,23 @@
 
     document.querySelectorAll('.animate').forEach(el => {
       observer.observe(el);
+    });
+
+    // White Mode Toggle
+    const toggleButton = document.getElementById('modeToggle');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      toggleButton.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+    });
+
+    // Scroll-to-top Button
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -7,23 +7,163 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cinzel+Decorative:wght@700&family=Roboto&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Grundstyles */
     body {
       background-color: #000;
       color: #f0f0f0;
       font-family: 'Roboto', sans-serif;
       line-height: 1.6;
+      margin: 0;
+      padding: 0;
     }
-    .info-list, .extended-list {
-      list-style-type: disc;
-      margin-left: 1.5rem;
+
+    nav {
+      background-color: #111;
+      padding: 1rem 0;
       margin-bottom: 2rem;
     }
-    .section-title {
-      font-size: 1.5rem;
-      margin-top: 2rem;
+
+    .nav-list {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
+
+    .nav-link {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #ff4500;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .title {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 2.8rem;
+      margin: 0;
+      letter-spacing: 3px;
+    }
+
+    .flag-color.green { color: #2ecc71; }
+    .flag-color.white { color: #f0f0f0; }
+    .flag-color.red { color: #e74c3c; }
+
     .subtitle {
       color: #aaa;
+      font-size: 1.2rem;
+      margin-top: 0.3rem;
+      font-weight: 300;
+    }
+
+    main.content {
+      max-width: 900px;
+      margin: 0 auto 4rem auto;
+      padding: 0 1rem;
+    }
+
+    h2.section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #ff4500;
+      padding-left: 0.5rem;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+      position: relative;
+      padding-right: 2rem; /* Platz für Pfeil */
+    }
+
+    h2.section-title:hover {
+      color: #ff4500;
+    }
+
+    /* Pfeil rechts neben Titel */
+    .section-title::after {
+      content: '▶';
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+      font-size: 1.2rem;
+      color: #ff4500;
+      pointer-events: none;
+    }
+
+    /* Pfeil dreht sich beim Öffnen */
+    .section-title.open::after {
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    /* Accordion Content Container */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      background-color: #111;
+      border-radius: 6px;
+      padding: 0 1rem;
+      box-shadow: 0 0 15px rgba(255,69,0,0.2);
+      margin-bottom: 2rem;
+    }
+
+    .accordion-content.open {
+      padding: 1rem 1rem;
+      max-height: 1000px; /* groß genug, um Inhalt zu zeigen */
+    }
+
+    ul.info-list, ul.extended-list {
+      list-style: disc inside;
+      margin: 0;
+      padding-left: 1rem;
+      color: #ddd;
+    }
+
+    ul.extended-list li {
+      margin-bottom: 0.6rem;
+      border-left: 3px solid transparent;
+      padding-left: 0.5rem;
+      transition: border-color 0.3s ease;
+    }
+
+    ul.extended-list li:hover {
+      border-left-color: #ff4500;
+      color: #ffbb99;
+    }
+
+    ul.info-list li strong {
+      color: #ff4500;
+    }
+
+    /* Footer */
+    footer.footer {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid #222;
+      color: #555;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      main.content {
+        padding: 0 0.5rem;
+      }
     }
   </style>
 </head>
@@ -36,8 +176,10 @@
       <li><a href="philo.html" class="nav-link">Philosophie</a></li>
       <li><a href="sanktionen.html" class="nav-link active">Sanktionskatalog</a></li>
       <li><a href="raenge.html" class="nav-link">Ränge</a></li>
-      <li><a href="merkmale.html" class="nav-link active">Merkmale</a></li>
-      <li><a href="hermanos.html" class="nav-link active">Hermanos</a></li>
+      <li><a href="merkmale.html" class="nav-link">Merkmale</a></li>
+      <li><a href="hermanos.html" class="nav-link">Hermanos</a></li>
+      <li><a href="ziele.html" class="nav-link">Fazit</a></li>
+      <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
     </ul>
   </nav>
 
@@ -51,72 +193,67 @@
 
   <main class="content">
     <section>
-      <h2 class="section-title">Disziplin & Sanktionen</h2>
-      <p>Der Sanktionskatalog ist das Herzstück der Ordnung im Diaz Kartell. Jede Abweichung von unseren Regeln wird streng geahndet, um den Zusammenhalt und die Macht unserer Organisation zu sichern.</p>
+      <h2 class="section-title open">Disziplin & Sanktionen</h2>
+      <div class="accordion-content open" style="max-height: 300px; padding: 1rem;">
+        <p>Der Sanktionskatalog ist das Herzstück der Ordnung im Diaz Kartell. Jede Abweichung von unseren Regeln wird streng geahndet, um den Zusammenhalt und die Macht unserer Organisation zu sichern.</p>
+      </div>
     </section>
 
     <section>
-      <h2 class="section-title">Beispiele für Sanktionen</h2>
-      <ul class="info-list">
-        <li><strong>Verstoß gegen Loyalität:</strong> Sofortiger Ausschluss und lebenslange Ächtung.</li>
-        <li><strong>Diebstahl aus dem Kartell:</strong> Geldstrafe oder körperliche Züchtigung, je nach Schwere.</li>
-        <li><strong>Verrat oder Weitergabe von Informationen:</strong> Tod oder lebenslange Haft innerhalb der Organisation.</li>
-        <li><strong>Ungehorsam gegenüber höhergestellten Rängen:</strong> Degradierung und öffentliche Bloßstellung.</li>
-        <li><strong>Missachtung der Regeln im legalen Business:</strong> Ausschluss von gewinnbringenden Geschäften.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 class="section-title">Erweiterter Sanktionskatalog</h2>
-      <ul class="extended-list">
-        <li>Nicht Erscheinen bei wichtigen Events ohne Abmeldung: 150.000$ bis Bloodout</li>
-        <li>Beleidigung außerhalb der Familie: 200.000 bis 400.000$</li>
-        <li>Funkpflicht Missachtet: 50.000$</li>
-        <li>Vergewaltigung des Funkknopfes: 75.000$</li>
-        <li>Kindisches Verhalten: 150.000$</li>
-        <li>Aufstellung stören: 100.000$</li>
-        <li>Die Kolonne zu unterbrechen: 75.000$</li>
-        <li>Nicht richtig Geparkt: 40.000$</li>
-        <li>Ein Familienmitglied töten: 850.000$ bis Bloodout</li>
-        <li>Ein Familienmitglied schlagen oder anschießen: 150.000$</li>
-        <li>Schießen auf dem Anwesen: 150.000$</li>
-        <li>Ausparkpunkt blockieren: 100.000$</li>
-        <li>Stress außerhalb der Familie provozieren: 1.000.000 bis 1.500.000$ bis Bloodout</li>
-        <li>Kleiderordnung missachtet: 200.000$</li>
-        <li>Gut der Familie verschenkt: 100.000$ bis 1.500.000$</li>
-        <li>Nicht abgemeldet: 75.000$</li>
-        <li>Nicht bezahlen einer Sanktion: +250.000$ auf die Sanktion + Warn</li>
-        <li>Familie bzw. Familienmitglieder nicht ernst nehmen: 450.000$ bis Bloodout</li>
-        <li>Familie lächerlich dastehen lassen: Bloodout</li>
-        <li>Regeln missachten: 100.000$ bis 500.000$</li>
-        <li>Befehl Höherer missachtet: Unbestimmt bis Bloodout</li>
-        <li>Weitergabe interner Informationen: Bloodout</li>
-        <li>Keine Waffe dabei gehabt: 75.000$</li>
-        <li>Sanktionen nicht zahlen innerhalb 3 Tagen (grundlos): 500.000$ bis Bloodout</li>
-        <li>Es dürfen keine Mitglieder gezinkt werden!: 500.000$</li>
-        <li>Das Nichtzahlen von Wochenbeiträgen nach 1 Woche: 750.000$</li>
-        <li>Das Nichtzahlen der Wochenbeiträge nach 2 Wochen: Bloodout</li>
-        <li>Das Ausziehen der Familienkleidung: 150.000$</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 class="section-title">Allgemeines Regelwerk</h2>
-      <ul class="extended-list">
-        <li>1. Verrate niemals die Familie</li>
-        <li>2. Rede nie über ein Mitglied oder Freunde schlecht in der Öffentlichkeit</li>
-        <li>3. Benimm dich so, wie es sich für ein Kartell gehört</li>
-        <li>4. Stell dich niemals alleine bei jemandem vor</li>
-        <li>5. Lege nie die Familienkleidung ab</li>
-        <li>6. Rede nicht mit den Cops</li>
-      </ul>
+      <h2 class="section-title">Sanktionskatalog</h2>
+      <div class="accordion-content">
+        <ul class="extended-list">
+          <li>Nicht Erscheinen bei wichtigen Events ohne Abmeldung: 150.000$ bis Bloodout</li>
+          <li>Beleidigung außerhalb der Familie: 200.000 bis 400.000$</li>
+          <li>Funkpflicht Missachtet: 50.000$</li>
+          <li>Vergewaltigung des Funkknopfes: 75.000$</li>
+          <li>Kindisches Verhalten: 150.000$</li>
+          <li>Aufstellung stören: 100.000$</li>
+          <li>Die Kolonne zu unterbrechen: 75.000$</li>
+          <li>Nicht richtig Geparkt: 40.000$</li>
+          <li>Ein Familienmitglied töten: 850.000$ bis Bloodout</li>
+          <li>Ein Familienmitglied schlagen oder anschießen: 150.000$</li>
+          <li>Schießen auf dem Anwesen: 150.000$</li>
+          <li>Ausparkpunkt blockieren: 100.000$</li>
+          <li>Stress außerhalb der Familie provozieren: 1.000.000 bis 1.500.000$ bis Bloodout</li>
+          <li>Kleiderordnung missachtet: 200.000$</li>
+          <li>Gut der Familie verschenkt: 100.000$ bis 1.500.000$</li>
+          <li>Nicht abgemeldet: 75.000$</li>
+          <li>Nicht bezahlen einer Sanktion: +250.000$ auf die Sanktion + Warn</li>
+          <li>Familie bzw. Familienmitglieder nicht ernst nehmen: 450.000$ bis Bloodout</li>
+          <li>Familie lächerlich dastehen lassen: Bloodout</li>
+          <li>Regeln missachten: 100.000$ bis 500.000$</li>
+          <li>Befehl Höherer missachtet: Unbestimmt bis Bloodout</li>
+          <li>Weitergabe interner Informationen: Bloodout</li>
+        </ul>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
-    &copy; 2025 Diaz Kartell – "Disziplin ist Macht."
+    &copy; 2025 Diaz Kartell. Alle Rechte vorbehalten.
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('.section-title').forEach(title => {
+      title.addEventListener('click', () => {
+        title.classList.toggle('open');
+        const content = title.nextElementSibling;
+
+        if (content.classList.contains('open')) {
+          content.style.maxHeight = null;
+          content.classList.remove('open');
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          content.classList.add('open');
+        }
+      });
+    });
+
+    // Bereits geöffnete Accordion-Inhalte auf maxHeight setzen
+    document.querySelectorAll('.accordion-content.open').forEach(content => {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    });
+  </script>
 </body>
 </html>

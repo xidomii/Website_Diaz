@@ -1,4 +1,4 @@
-// Animation beim Scrollen (fadeSlideIn)
+// Animationen beim Scrollen
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -12,12 +12,12 @@ document.querySelectorAll('.animate').forEach(el => {
   observer.observe(el);
 });
 
-// Hermanos Löschen (funktioniert nur auf hermanos.html)
-function deleteMember(button) {
-  const memberBox = button.closest('.member-box');
-  if (memberBox) {
-    memberBox.remove();
+// Löschen von Mitgliedern aus der Liste
+document.addEventListener('click', event => {
+  if (event.target.classList.contains('delete-button')) {
+    const memberCard = event.target.closest('.member-card');
+    if (memberCard) {
+      memberCard.remove();
+    }
   }
-}
-
-// Beispiel: Wenn du Hermanos über JS nachladen möchtest, kannst du hier erweitern
+});
